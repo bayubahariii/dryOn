@@ -12,12 +12,12 @@
                 'mailtype'=>'html',
                 'charset'=>'utf-8',
                 'smtp_crypto' => 'security',
+                'crlf' => '\r\n',
+		        'newline' => '\r\n',
+			    'bcc_batch_mode'=> FALSE,
+			    'bcc_batch_size' => 200,
                 'wordwrap'=>TRUE
             );
-            $config['crlf'] = "\r\n";
-			$config['newline'] = "\r\n";
-			$config['bcc_batch_mode'] = FALSE;
-			$config['bcc_batch_size'] = 200;
 
             $this->email->initialize($config);
 

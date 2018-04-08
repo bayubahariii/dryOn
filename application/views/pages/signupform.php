@@ -60,19 +60,33 @@
     </div>
 </div>
 <div class="blue">
-
 </div>
-<div class="signup-field">
     <div class="atas">
         <h3>Register</h3>
+        <?php if (validation_errors()) : ?>
+			<div class="col-md-12">
+				<div class="alert alert-danger" role="alert">
+					<?= validation_errors() ?>
+				</div>
+			</div>
+		<?php endif; ?>
+		<?php if (isset($error)) : ?>
+			<div class="col-md-12">
+				<div class="alert alert-danger" role="alert">
+					<?= $error ?>
+				</div>
+			</div>
+		<?php endif; ?>
+		<div class="col-md-12">
     </div>
-    <?php if (isset($_SESSION['success'])){ ?>
-        <div class="alert alert-success"><?php echo $_SESSION['success']; ?></div>
-    <?php
-    } ?>
-
-    <?php echo validation_errors('<div class="alert alert-danger">','</div>')?>
-    <form method="post" action="<?php echo base_url()?>registers/register">
+    <form method="post" action="<?php echo base_url()?>users/register">
+    <?php if($responce = $this->session->flashdata('Successfully')): ?>
+      <div class="box-header">
+        <div class="col-md-12">
+           <div class="alert alert-success"><?php echo $responce;?></div>
+        </div>
+      </div>
+    <?php endif;?>
         <br>
         <p>Fill in the details to register in our website!!!</p>    
         <div class="input-group" style="margin-bottom: 10px">
@@ -137,10 +151,10 @@
                         <option value="Biasa">Biasa</option>
                     </select>
                 </div>
-            <button name="register" type="submit" class="btn btn-primary" style="width: 100%;margin-bottom: 10px" >Register</button>
+            <button name="register" type="submit" class="btn btn-primary" style="width: 100%;margin-bottom: 10px; float:left;" >Register</button>
     </form>
 </div>
-
+<?php echo suscess ?>
 </body>
 
 </html>
